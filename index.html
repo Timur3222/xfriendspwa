@@ -1575,6 +1575,18 @@
           }
         });
 
+        $(document).on("click", "#expand-button", function () {
+          if ($(this).hasClass("colapsed")) {
+            $(this).removeClass("colapsed");
+            $(this).text("Меньше");
+            $("#text").removeClass("collapsed");
+          } else {
+            $(this).addClass("colapsed");
+            $(this).text("Больше ...");
+            $("#text").addClass("collapsed");
+          }
+        });
+
         let deferredPrompt;
         const installButton = document.getElementById("install_button");
         const loading = document.querySelector(".loading");
