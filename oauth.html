@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Авторизация</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  const url = new URL(window.location.href);
+  const code = url.searchParams.get("code");
+
+  const parameters = {
+    client_id:
+      "231119379399-eekstn5uuegt943e5dbn7pujod9mmbfm.apps.googleusercontent.com",
+    client_secret: "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",
+    redirect_uri: window.location.origin + "/oauth.html",
+    grant_type: "authorization_code",
+    code,
+  };
+
+  const form = document.createElement("form");
+  form.setAttribute("method", "POST");
+  form.setAttribute("action", "https://accounts.google.com/o/oauth2/token");
+
+  for (const key in parameters) {
+    const input = document.createElement("input");
+    input.setAttribute("type", "hidden");
+    input.setAttribute("name", key);
+    input.setAttribute("value", parameters[key]);
+    form.appendChild(input);
+  }
+
+  document.body.appendChild(form);
+
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "https://accounts.google.com/o/oauth2/token");
+  xhr.onload = async (e) => {
+    const userInfoRes = await fetch(
+      "https://www.googleapis.com/oauth2/v1/userinfo",
+      {
+        method: "get",
+        headers: {
+          Authorization: "Bearer " + JSON.parse(e.target.response).access_token,
+        },
+      }
+    );
+
+    const userInfo = await userInfoRes.json();
+    document.cookie = `email=${userInfo.email}; max-age=${60 * 60 * 24 * 30};`;
+    window.location.href = window.location.origin;
+  };
+  const formData = new FormData(document.querySelector("form"));
+  xhr.send(formData);
+</script>
