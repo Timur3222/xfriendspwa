@@ -1702,7 +1702,8 @@
 
         setTimeout(function () {
           window.addEventListener("permissionChanged", async (e) => {
-            await OneSignal.Slidedown.promptPush();
+            const res = await OneSignal.Slidedown.promptPush();
+            console.log(res)
             if (e.detail.value) {
               $("#install_button").prop("disabled", false);
               $("#notification-alert").addClass("hidden");
