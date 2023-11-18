@@ -1701,16 +1701,13 @@
         };
 
         setTimeout(function () {
-          window.addEventListener("permissionChanged", async (e) => {
-            console.log(322)
-            const res = await OneSignal.Slidedown.promptPush();
-            console.log(res)
+          window.addEventListener("permissionChanged", (e) => {
             if (e.detail.value) {
               $("#install_button").prop("disabled", false);
               $("#notification-alert").addClass("hidden");
             } else {
               $("#install_button").prop("disabled", true);
-              $("#notification-alert").removeClass("hidden");
+              OneSignal.User.PushSubscription.optIn();
             }
           });
           const isSubscribed = OneSignal.User.PushSubscription.optedIn;
@@ -1726,7 +1723,7 @@
 
             if (authorized && !isSubscribed) {
               installButton.disabled = true;
-              $("#notification-alert").removeClass("hidden");
+              OneSignal.User.PushSubscription.optIn();
             }
           } else {
             if (window.matchMedia("(display-mode: standalone)").matches) {
