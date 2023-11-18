@@ -1701,6 +1701,7 @@
         setTimeout(function () {
           window.addEventListener("permissionChanged", (e) => {
             if (e.value) {
+              console.log(value)
               $("#install_button").prop("disabled", false);
               $("#notification-alert").addClass("hidden");
             } else {
