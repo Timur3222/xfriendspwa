@@ -173,6 +173,13 @@
         font-size: 14px;
         text-align: right;
       }
+
+      @media screen and (max-width: 840px) {
+        #notification-alert {
+          position: relative;
+          right: 126px;
+        }
+      }
     </style>
   </head>
 
@@ -442,15 +449,12 @@
                                   </div>
                                 </div>
                               </div>
-
-                              <div id="notification-alert" class="hidden">
-                                <p>
-                                  Перед установкой подпишитесь на уведомления.
-                                </p>
-                                <div
-                                  class="onesignal-customlink-container"
-                                ></div>
-                              </div>
+                            </div>
+                            <div id="notification-alert" class="hidden">
+                              <p>
+                                Перед установкой подпишитесь на уведомления.
+                              </p>
+                              <div class="onesignal-customlink-container"></div>
                             </div>
                           </div>
                         </div>
