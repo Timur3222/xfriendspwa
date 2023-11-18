@@ -30,6 +30,9 @@
           if (permission) {
             $("#install_button").disabled = false;
             $("#notification-alert").addClass("hidden");
+          } else {
+            $("#install_button").disabled = true;
+            $("#notification-alert").removeClass("hidden");
           }
         }
 
