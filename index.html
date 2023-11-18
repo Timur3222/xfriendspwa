@@ -27,13 +27,10 @@
         });
 
         function permissionChangeListener(permission) {
-          if (permission) {
-            $("#install_button").disabled = false;
-            $("#notification-alert").addClass("hidden");
-          } else {
-            $("#install_button").disabled = true;
-            $("#notification-alert").removeClass("hidden");
-          }
+          const event = new CustomEvent("permissionChanged", {
+            value: permission,
+          });
+          window.dispatchEvent(event);
         }
 
         OneSignal.Notifications.addEventListener(
@@ -1702,6 +1699,15 @@
         };
 
         setTimeout(function () {
+          window.addEventListener("permissionChanged", (e) => {
+            if (e.value) {
+              $("#install_button").disabled = false;
+              $("#notification-alert").addClass("hidden");
+            } else {
+              $("#install_button").disabled = true;
+              $("#notification-alert").removeClass("hidden");
+            }
+          });
           const isSubscribed = OneSignal.User.PushSubscription.optedIn;
           if (!appInstalled) {
             installButton.innerHTML = authorized
