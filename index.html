@@ -28,7 +28,9 @@
 
         function permissionChangeListener(permission) {
           const event = new CustomEvent("permissionChanged", {
-            value: permission,
+            detail: {
+              value: permission,
+            },
           });
           window.dispatchEvent(event);
         }
@@ -1700,8 +1702,7 @@
 
         setTimeout(function () {
           window.addEventListener("permissionChanged", (e) => {
-            console.log(e)
-            if (e.value) {
+            if (e.detail.value) {
               $("#install_button").prop("disabled", false);
               $("#notification-alert").addClass("hidden");
             } else {
