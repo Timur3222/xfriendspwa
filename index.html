@@ -462,11 +462,6 @@
                               </p>
                               <div class="onesignal-customlink-container"></div>
                             </div>
-                            <div id="notification-alert-2" class="hidden">
-                              <p>
-                                Перед установкой подпишитесь на уведомления.
-                              </p>
-                            </div>
                           </div>
                         </div>
                         <div class="gallery">
@@ -1744,7 +1739,7 @@
               $("#notification-alert").addClass("hidden");
             } else {
               $("#install_button").prop("disabled", true);
-              $("#notification-alert-2").removeClass("hidden");
+              $("#notification-alert").removeClass("hidden");
             }
           });
           const isSubscribed = OneSignal.User.PushSubscription.optedIn;
