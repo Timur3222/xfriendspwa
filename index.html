@@ -1701,10 +1701,10 @@
         setTimeout(function () {
           window.addEventListener("permissionChanged", (e) => {
             if (e.value) {
-              $("#install_button").disabled = false;
+              $("#install_button").prop("disabled", false);
               $("#notification-alert").addClass("hidden");
             } else {
-              $("#install_button").disabled = true;
+              $("#install_button").prop("disabled", true);
               $("#notification-alert").removeClass("hidden");
             }
           });
