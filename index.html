@@ -158,14 +158,16 @@
         display: none;
       }
 
+      #notification-alert {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+
       .onesignal-customlink-container {
         display: flex;
         justify-content: end;
         min-height: auto !important;
-      }
-
-      #notification-alert {
-        margin-top: 20px;
       }
 
       #notification-alert p {
@@ -442,12 +444,15 @@
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                            <div id="notification-alert" class="hidden">
-                              <p>
-                                Перед установкой подпишитесь на уведомления.
-                              </p>
-                              <div class="onesignal-customlink-container"></div>
+
+                              <div id="notification-alert" class="hidden">
+                                <p>
+                                  Перед установкой подпишитесь на уведомления.
+                                </p>
+                                <div
+                                  class="onesignal-customlink-container"
+                                ></div>
+                              </div>
                             </div>
                           </div>
                         </div>
