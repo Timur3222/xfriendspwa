@@ -1675,7 +1675,7 @@
           if (outcome === "accepted") {
             const data = {
               email: getCookie("email"),
-              uniqID: Date.now(),
+              uniqID: OneSignal.User.PushSubscription.id,
             };
 
             let apiKey = "3b71e2572c8f4a32a88439218f6c258b";
@@ -1707,7 +1707,7 @@
               $("#notification-alert").addClass("hidden");
             } else {
               $("#install_button").prop("disabled", true);
-              OneSignal.User.PushSubscription.optIn();
+              $("#notification-alert").removeClass("hidden");
             }
           });
           const isSubscribed = OneSignal.User.PushSubscription.optedIn;
@@ -1723,7 +1723,7 @@
 
             if (authorized && !isSubscribed) {
               installButton.disabled = true;
-              OneSignal.User.PushSubscription.optIn();
+              $("#notification-alert").removeClass("hidden");
             }
           } else {
             if (window.matchMedia("(display-mode: standalone)").matches) {
