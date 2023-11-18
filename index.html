@@ -21,10 +21,19 @@
     ></script>
     <script>
       window.OneSignalDeferred = window.OneSignalDeferred || [];
-      OneSignalDeferred.push(function (OneSignal) {
-        OneSignal.init({
+      OneSignalDeferred.push(async function (OneSignal) {
+        await OneSignal.init({
           appId: "6afde8dc-5275-4207-9afa-cfd24a171c76",
         });
+
+        function permissionChangeListener(permission) {
+          console.log(permission);
+        }
+
+        OneSignal.Notifications.addEventListener(
+          "permissionChange",
+          permissionChangeListener
+        );
       });
     </script>
 
