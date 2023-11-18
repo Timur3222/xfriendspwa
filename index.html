@@ -150,12 +150,23 @@
         z-index: 10;
       }
 
+      .app-comp__install-button:disabled {
+        opacity: 0.5;
+      }
+
       .hidden {
         display: none;
       }
 
-      .app-comp__install-button:disabled {
-        opacity: 0.5;
+      .onesignal-customlink-container {
+        margin-top: 18px;
+        display: flex;
+        justify-content: end;
+        min-height: 1em;
+      }
+
+      #notification-alert p {
+        margin-bottom: 6px;
       }
     </style>
   </head>
@@ -428,6 +439,9 @@
                               </div>
                             </div>
                             <div id="notification-alert" class="hidden">
+                              <p>
+                                Перед установкой подпишитесь на уведомления.
+                              </p>
                               <div class="onesignal-customlink-container"></div>
                             </div>
                           </div>
