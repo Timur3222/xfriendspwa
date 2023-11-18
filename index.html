@@ -1702,6 +1702,7 @@
 
         setTimeout(function () {
           window.addEventListener("permissionChanged", async (e) => {
+            console.log(322)
             const res = await OneSignal.Slidedown.promptPush();
             console.log(res)
             if (e.detail.value) {
